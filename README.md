@@ -1,3 +1,39 @@
+I created a next project using `next build && next export`. When i open the index.html file from the 'out' folder in a browser assets were not loaded. Not css, images and custom fonts. Because of wrong asset paths.
+
+The exported paths are for example: `/vercel.svg` but should be `./vercel.svg` to load properly.
+
+The problem is that the latter path gives an error on `npm run dev`, so can't be changed in the repo.
+
+What is the recommended way to use `next export` which leads to correct asset paths?
+
+The [Static HTML Export](https://nextjs.org/docs/advanced-features/static-html-export) documentation does not mention any requirements for configuration.
+
+I already found out that adding `assetPrefix: './'` or `assetPrefix: '.'` to next.config.js makes CSS load correctly. But not custom fonts and images.
+
+But is that the recommended way to solve the problem partly? 
+
+What approach should be used to solve the custom font and image paths?
+
+I am aware of another workaround which works good for images: Changing paths by environment variable: `process.env.NODE_ENV === 'development' ? '/vercel.svg' : './vercel.svg'`
+
+There are some discussions about this topic out there, but I couldn't find a satisfying answer.
+
+Any recommendations?
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
